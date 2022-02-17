@@ -12,21 +12,39 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    dependencies {
+        dependency('net.logstash.logback:logstash-logback-encoder:6.6')
+    }
+}
+
 dependencies {
     // spring-boot
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-security')
 
     // json
     implementation('com.fasterxml.jackson.core:jackson-core:2.13.1')
     implementation('com.fasterxml.jackson.core:jackson-annotations:2.13.1')
     implementation('com.fasterxml.jackson.core:jackson-databind:2.13.1')
 
+    // model mapper & convert
+    implementation('org.modelmapper:modelmapper:2.4.5')
+
+    // logger
+    implementation('net.logstash.logback:logstash-logback-encoder')
+
     // lombok
     compileOnly('org.projectlombok:lombok:1.18.22')
     annotationProcessor('org.projectlombok:lombok:1.18.22')
 
+    // utils
+    implementation('org.apache.commons:commons-lang3:3.12.0')
+    implementation('org.apache.commons:commons-collections4:4.4')
+
     // test
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }

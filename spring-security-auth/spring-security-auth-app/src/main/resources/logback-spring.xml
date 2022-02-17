@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <springProfile name="local,test">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+        <logger name="com.example.spring.security.auth" level="DEBUG"/>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="dev,beta">
+        <include resource="logback/application-json-appender.xml"/>
+
+        <logger name="com.example.spring.security.auth" level="DEBUG"/>
+
+        <root level="INFO">
+            <appender-ref ref="APPLICATION_JSON"/>
+        </root>
+    </springProfile>
+    <springProfile name="stage,prod">
+        <include resource="logback/application-json-appender.xml"/>
+
+        <logger name="com.example.spring.security.auth" level="INFO"/>
+
+        <root level="INFO">
+            <appender-ref ref="APPLICATION_JSON"/>
+        </root>
+    </springProfile>
+</configuration>
